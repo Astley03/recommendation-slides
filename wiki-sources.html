@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>正式 Wiki 章節與證據卡</title><link rel="stylesheet" href="recommendation.css"></head><body><main id="deck" class="wiki-reader"><h1>正式 Wiki 章節與證據卡</h1><p><a href="recommendation.html">返回簡報</a> · 也可用瀏覽器的上一頁回到剛才的投影片。</p><article class="slide"><h2 id="recommendation-basics--推薦系統在做什麼">推薦系統在做什麼？</h2><p>正式 Wiki：<a href="../wiki/recommendation-basics.md">recommendation-basics.md</a></p><pre class="wiki-excerpt">推薦系統（recommender system）幫助使用者從大量內容中發現可能感興趣的項目，包括原先沒想過要搜尋的內容。〔S01-01｜Why recommendations?〕
+
+推薦可以從不同地方開始。首頁推薦（homepage recommendations）從使用者已知的興趣出發，呈現個人化推薦（personalized recommendations）。相關項目推薦（related item recommendations）從眼前的某個項目出發，呈現與它相似的項目。〔S01-02｜Homepage recommendations、Related item recommendations〕</pre></article>
+<article class="slide"><h2 id="recommendation-methods-and-challenges--搜尋與推薦的差異">搜尋與推薦的差異</h2><p>正式 Wiki：<a href="../wiki/recommendation-methods-and-challenges.md">recommendation-methods-and-challenges.md</a></p><pre class="wiki-excerpt">搜尋（search）通常從使用者主動提出的查詢（query）開始。推薦（recommendation）則可以在使用者沒有輸入查詢時，依已知興趣主動呈現可能有用的項目，讓使用者發現原本沒想到要找的內容。〔S06-05｜The basics、“Jump starting” the recommendations system〕〔S01-06｜Recommendations: what and why? › Homepage recommendations、Why recommendations?〕
+
+例如，輸入片名找影片是搜尋，打開首頁就看到可能喜歡的影片是推薦。這是兩個起點的教學對照。〔S06-05｜The basics、“Jump starting” the recommendations system〕〔S01-06｜Recommendations: what and why? › Homepage recommendations、Why recommendations?〕</pre></article>
+<article class="slide"><h2 id="recommendation-basics--使用者行為怎麼成為推薦資料">使用者行為怎麼成為推薦資料？</h2><p>正式 Wiki：<a href="../wiki/recommendation-basics.md">recommendation-basics.md</a></p><pre class="wiki-excerpt">Netflix 會參考多種資訊，估計使用者可能喜歡哪些內容。〔S06-01｜The basics〕
+
+- **使用者互動訊號（user interaction signals）**。觀看紀錄、使用者給出的評分及觀看時長。〔S06-01｜The basics〕
+- **內容特徵（content features）**。內容類型、演員及發行年份等描述內容本身的資訊。〔S06-01｜The basics〕
+
+Netflix 也會參考品味相近的會員。〔S06-01｜The basics〕
+
+建立 Netflix 帳號或新增使用者檔案時，可以選幾項喜歡的內容作為推薦起點。跳過時，服務會先顯示多樣且熱門的內容。開始互動後，近期的互動比更早的互動更能影響推薦。〔S06-02｜“Jump starting” the recommendations system〕</pre></article>
+<article class="slide"><h2 id="recommendation-basics--netflix-首頁的個人化呈現案例">Netflix 首頁的個人化呈現案例</h2><p>正式 Wiki：<a href="../wiki/recommendation-basics.md">recommendation-basics.md</a></p><pre class="wiki-excerpt">Netflix 官方公開說明，首頁的個人化可以反映在顯示哪些內容列、每列有哪些項目，以及項目的排列順序。這些資訊描述使用者看到的首頁，無法據此判定 Netflix 的內部系統是否採用 Google 課程所述的三階段架構。〔S06-03｜Rows, rankings and title representation〕
+
+使用者之後開始觀看、看完內容或給出評分時，這些回饋會用來持續更新推薦演算法。〔S06-04｜How we improve our recommendations system〕</pre></article>
+<article class="slide"><h2 id="recommendation-basics--google-課程中的常見架構">Google 課程中的常見架構</h2><p>正式 Wiki：<a href="../wiki/recommendation-basics.md">recommendation-basics.md</a></p><pre class="wiki-excerpt">Google 的課程介紹一種常見的推薦系統架構，分為以下三個階段。〔S01-03｜Candidate generation；S01-04｜Scoring；S01-05｜Re-ranking〕
+
+1. **候選產生（candidate generation）**。先從大量可選項目縮小到一批候選項目。〔S01-03｜Candidate generation〕
+2. **評分（scoring）**。為候選項目打分並排序，以選出可呈現的項目。〔S01-04｜Scoring〕
+3. **重新排序（re-ranking）**。加入額外條件調整結果，例如移除使用者明確表示不喜歡的項目，或讓較新的內容更容易排到前面。〔S01-05｜Re-ranking〕</pre></article>
+<article class="slide"><h2 id="recommendation-methods-and-challenges--內容式推薦">內容式推薦</h2><p>正式 Wiki：<a href="../wiki/recommendation-methods-and-challenges.md">recommendation-methods-and-challenges.md</a></p><pre class="wiki-excerpt">內容式推薦（content-based filtering）可根據使用者先前的行為或明示偏好，找出特徵相近的項目。以自製教學例來說，若讀者收藏了標有「推理」的書，可以把其他書的主題標籤與這項偏好比對，優先推薦也帶有「推理」標籤的書。〔S01-07｜Content-based filtering › 正文開頭、Using dot product as a similarity measure〕
+
+若總是從已有興趣找相似項目，系統探索其他主題的能力可能有限。〔S01-08｜Content-based filtering advantages &amp; disadvantages › Disadvantages〕</pre></article>
+<article class="slide"><h2 id="collaborative-filtering--先把評分整理成矩陣">先把評分整理成矩陣</h2><p>正式 Wiki：<a href="../wiki/collaborative-filtering.md">collaborative-filtering.md</a></p><pre class="wiki-excerpt">協同過濾（collaborative filtering, CF）利用已知偏好，推估使用者對其他項目的偏好。使用者－項目矩陣（user–item matrix）把每位使用者放在一列，每個項目放在一欄，交會處放該使用者的評分。空格代表缺少評分，低分則是已記錄的評分。〔S03-01｜§1，表 1，pp. 1–2〕</pre></article>
+<article class="slide"><h2 id="collaborative-filtering--找相似的人或找相似的項目">找相似的人，或找相似的項目</h2><p>正式 Wiki：<a href="../wiki/collaborative-filtering.md">collaborative-filtering.md</a></p><pre class="wiki-excerpt">- **使用者式協同過濾（user-based collaborative filtering）**。找出兩位使用者都評過的項目，依這些評分比較兩人。若要預測某個項目的評分，可參考相似使用者對該項目的評分。論文式 (5) 的一種做法會先考慮每個人的平均評分，再加權合併其他使用者的評分偏差。〔S03-02｜§3.1、§3.2.1，式 (5)，pp. 5–6〕
+- **項目式協同過濾（item-based collaborative filtering）**。找出同時評過兩個項目的使用者，依這些人的評分比較兩個項目。若要預測某位使用者對目標項目的評分，可從這位使用者對其他相似項目的已知評分推估。〔S03-03｜§3.1、§3.2.2，pp. 5、7〕</pre></article>
+<article class="slide"><h2 id="collaborative-filtering--項目式評分預測算例">項目式評分預測算例</h2><p>正式 Wiki：<a href="../wiki/collaborative-filtering.md">collaborative-filtering.md</a></p><pre class="wiki-excerpt">### 原文方法
+
+將兩個項目的評分向量按相同的使用者順序排列。餘弦相似度（cosine similarity）是兩向量的內積（dot product）除以兩者長度的乘積。對兩維向量 `(a, b)`、`(c, d)`，計算式是 `(ac + bd) / (√(a² + b²) × √(c² + d²))`，兩向量長度須大於零。〔S03-04｜§3.1.2，式 (3)–(4)，p. 6〕
+
+評分預測（rating prediction）使用簡單加權平均（simple weighted average）。論文的式 (7) 將使用者對其他已評項目的分數乘上各自與目標項目的相似度後相加，再除以這些相似度**絕對值**的總和。分母須大於零。〔S03-05｜§3.2.2，式 (7)，p. 7〕
+
+### 自製教學示範資料
+
+以下為自行設計的 1–5 分評分資料。數值與計算結果僅用於示範。
+
+| 使用者 | 項目 A | 項目 B | 項目 C |
+| --- | ---: | ---: | ---: |
+| 小安 | 5 | 3 | ? |
+| 小博 | 3 | 4 | 3 |
+| 小晴 | 4 | 3 | 4 |
+
+1. **找出共同評分者**。目標是預測小安對 C 的評分。以小博、小晴為序，C 與 A 的向量均為 `(3, 4)`。比較 C 與 B 時，C 的向量為 `(3, 4)`，B 為 `(4, 3)`。〔S03-03｜§3.1、§3.2.2，pp. 5、7〕
+2. **算出兩個權重**。這些向量的長度都是 `√(9 + 16) = 5`。C 與 A 的相似度為 `(3×3 + 4×4) / (5×5) = 25/25 = 1`。C 與 B 的相似度為 `(3×4 + 4×3) / (5×5) = 24/25 = 0.96`。〔S03-04｜§3.1.2，式 (3)–(4)，p. 6〕
+3. **帶入小安的已知評分**。加權分子為 `5×1 + 3×0.96 = 7.88`，分母為 `|1| + |0.96| = 1.96`。預測結果為 `7.88 / 1.96 = 197/49 ≈ 4.02` 分（四捨五入至小數點後兩位）。〔S03-05｜§3.2.2，式 (7)，p. 7〕
+
+### 教學提醒
+
+以下三點依 S03 對共同評分、相似度與資料稀疏的討論整理。〔S03-06｜§2.1、§3.1、§3.1.2 式 (3)、§3.4.1，pp. 2–3、5–7〕
+
+- 本例只有小博、小晴兩位共同評分者，因此算出的相似度可能不夠穩定。
+- 餘弦相似度高，表示共同評分形成的向量方向接近。單憑這個分數無法判定項目本身的內容是否相似。
+- 實際推薦系統使用協同過濾時，仍須注意資料稀疏（data sparsity）。當評分矩陣有大量缺值，系統的預測與推薦都可能受影響。
+
+[S03 出版版 PDF](https://onlinelibrary.wiley.com/doi/pdf/10.1155/2009/421425) · [證據卡](../cards/batch-02-evidence.md) · [來源取得紀錄](../raw/batch-02-source-record.md)</pre></article>
+<article class="slide"><h2 id="recommendation-methods-and-challenges--混合式推薦">混合式推薦</h2><p>正式 Wiki：<a href="../wiki/recommendation-methods-and-challenges.md">recommendation-methods-and-challenges.md</a></p><pre class="wiki-excerpt">混合式推薦（hybrid recommendation）把不同的推薦方法組合起來。S03 綜述中的 P-Tango 就分別取得協同過濾（collaborative filtering）和內容式推薦的結果，再給兩者權重（weights）。它起初讓兩種方法的權重相同，後續依預測獲得確認或否定的情況調整。〔S03-07｜§5，pp. 11–12；§5.2，p. 12〕</pre></article>
+<article class="slide"><h2 id="recommendation-methods-and-challenges--冷啟動">冷啟動</h2><p>正式 Wiki：<a href="../wiki/recommendation-methods-and-challenges.md">recommendation-methods-and-challenges.md</a></p><pre class="wiki-excerpt">冷啟動（cold start）是資料稀疏（data sparsity）的一種情境。**新使用者**剛加入時，系統缺少他評過或買過什麼的歷史，難以推估其偏好。**新項目**剛加入時，系統缺少其他人對該項目的評分，難以從評分推估它與既有項目的關聯。這兩種情境會影響仰賴互動歷史的協同過濾。〔S03-08｜§2.1，pp. 2–3〕
+
+Netflix 的公開說明提供一個新使用者案例。建立帳號或新增檔案時，可以選幾項喜歡的內容；略過時，服務先提供多樣且熱門的內容。這個例子描述使用者看得到的起始流程。〔S06-05｜The basics、“Jump starting” the recommendations system〕</pre></article>
+<article class="slide"><h2 id="collaborative-filtering--教學提醒">教學提醒</h2><p>正式 Wiki：<a href="../wiki/collaborative-filtering.md">collaborative-filtering.md</a></p><pre class="wiki-excerpt">以下三點依 S03 對共同評分、相似度與資料稀疏的討論整理。〔S03-06｜§2.1、§3.1、§3.1.2 式 (3)、§3.4.1，pp. 2–3、5–7〕
+
+- 本例只有小博、小晴兩位共同評分者，因此算出的相似度可能不夠穩定。
+- 餘弦相似度高，表示共同評分形成的向量方向接近。單憑這個分數無法判定項目本身的內容是否相似。
+- 實際推薦系統使用協同過濾時，仍須注意資料稀疏（data sparsity）。當評分矩陣有大量缺值，系統的預測與推薦都可能受影響。
+
+[S03 出版版 PDF](https://onlinelibrary.wiley.com/doi/pdf/10.1155/2009/421425) · [證據卡](../cards/batch-02-evidence.md) · [來源取得紀錄](../raw/batch-02-source-record.md)</pre></article>
+<article class="slide"><h2 id="recommendation-methods-and-challenges--推薦多樣性">推薦多樣性</h2><p>正式 Wiki：<a href="../wiki/recommendation-methods-and-challenges.md">recommendation-methods-and-challenges.md</a></p><pre class="wiki-excerpt">相關性（relevance）關心個別項目是否符合使用者的興趣；多樣性（diversity）則關心清單中的項目是否彼此過於相似。Google 課程指出，若只挑最接近查詢的項目，清單可能充滿同類影片。重新排序（re-ranking）可以納入影片類型，讓清單包含更多類別。〔S01-09｜Re-ranking › Diversity、Solutions〕
+
+以課程的貓頭鷹影片情境延伸做教學示意：若原先分數最高的影片全是貓頭鷹，讓一部原分數稍低的其他野生動物影片進入清單，會增加主題多樣性，也會讓一部原相似度較高的影片讓出位置。這是可能的取捨，實際結果取決於候選內容及排序方式。〔S01-09｜Re-ranking › Diversity、Solutions〕
+
+[補充證據卡](../cards/wiki-supplement-evidence.md) · [來源定位紀錄](../raw/wiki-supplement-source-record.md)</pre></article>
+<article class="slide"><h2 id="recommendation-case-studies--amazon-2003從買過的商品找相似商品">Amazon 2003：從買過的商品找相似商品</h2><p>正式 Wiki：<a href="../wiki/recommendation-case-studies.md">recommendation-case-studies.md</a></p><pre class="wiki-excerpt">商品對商品協同過濾（item-to-item collaborative filtering）以顧客已購買或評過的商品為起點，查找每件商品的相似商品，再合併成推薦清單。報告中用來比較的使用者式協同過濾（user-based collaborative filtering）會先找行為相近的顧客，再參考這些顧客的商品。兩者比較的對象分別是商品與顧客。〔S04-01｜Recommendation Algorithms，p. 76；Traditional Collaborative Filtering，pp. 76–77；How It Works，p. 78〕
+
+要建立商品關聯，先找出買過某件商品的顧客，再從這些顧客的購買紀錄找出他們還買了哪些商品。研究以這種共購（co-purchase）資料找出有共同購買者的商品對，再計算相似度。這裡的共購以顧客為單位。〔S04-02｜How It Works，pp. 78–79〕
+
+報告舉餘弦相似度（cosine similarity）為例。把每件商品表示為向量（vector），各維對應顧客，資料來自購買紀錄。向量方向越接近，就這項量度而言，兩件商品的購買模式越相似。〔S04-03｜How It Works，p. 79〕
+
+這個做法的擴充性（scalability）來自把耗時的相似商品表預先離線計算（offline computation）。線上（online）提供推薦時，以顧客買過或評過的商品查表並合併結果。依作者對這套設計的分析，線上工作量取決於該顧客的購買與評分項目數，離線建表仍有成本。〔S04-04｜How It Works，p. 79；Scalability: A Comparison，p. 79〕</pre></article>
+<article class="slide"><h2 id="recommendation-case-studies--youtube-2016先找出候選影片再細緻排序">YouTube 2016：先找出候選影片，再細緻排序</h2><p>正式 Wiki：<a href="../wiki/recommendation-case-studies.md">recommendation-case-studies.md</a></p><pre class="wiki-excerpt">論文描述兩個神經網路（neural networks）。候選生成（candidate generation）從大型影片庫找出較小的一組相關影片。排序（ranking）為候選影片評分，讓分數較高的影片優先呈現。〔S05-01｜§2，圖 2，PDF p. 2〕
+
+**觀看行為如何參與候選生成？** 觀看是隱式回饋（implicit feedback）。論文在訓練時把看完影片當作正例（positive example），並用觀看歷史作為輸入之一。模型將看過的影片識別碼轉成嵌入向量（embedding vectors），再取平均，以固定長度的向量表示這段歷史。〔S05-02｜§3.1，PDF p. 2；§3.2，圖 3，PDF p. 3〕
+
+**觀看行為如何參與排序？** 排序模型使用曝光（impression）資料，也就是影片曾被呈現給使用者的紀錄。論文對已點擊的曝光依實際觀看時長加權，用來估計每次曝光的預期觀看時長（expected watch time per impression）。模型也能利用影片及使用者與影片關係的特徵評分。〔S05-03｜§4，PDF p. 5；§4.2，PDF p. 7〕
+
+**為什麼分兩階段？** 候選生成先把大量影片縮成較小的集合，排序就能對較少的影片用更多特徵做細部比較。排序還能把不同來源的候選放在一起評分，原始候選分數即使無法直接比較，也能重新排序。〔S05-04｜§2，圖 2，PDF p. 2；§4，PDF p. 5〕
+
+[S04 原文 PDF](https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf) · [S05 原文 PDF 副本](https://fsnagle.org/papers/covington2016youtube.pdf) · [證據卡](../cards/batch-03-evidence.md) · [來源取得紀錄](../raw/batch-03-source-record.md)</pre></article>
+<article class="slide"><h2 id="recommendation-case-studies--amazon-與-youtube-推薦方法比較">Amazon 與 YouTube 推薦方法比較</h2><p>正式 Wiki：<a href="../wiki/recommendation-case-studies.md">recommendation-case-studies.md</a></p><pre class="wiki-excerpt">Amazon 研究發表於 2003 年，YouTube 研究發表於 2016 年。下表只比較兩篇研究公開描述的方法，無法據此推論兩個平台目前完整的推薦架構。出版資訊見[來源取得紀錄](../raw/batch-03-source-record.md)。
+
+| 比較項目 | Amazon（2003） | YouTube（2016） |
+| --- | --- | --- |
+| 推薦對象 | 購物型錄中的商品。〔S04-01｜Recommendation Algorithms，p. 76；Traditional Collaborative Filtering，pp. 76–77；How It Works，p. 78〕 | 影片庫中的影片。〔S05-01｜§2，圖 2，PDF p. 2〕 |
+| 資料來源 | 用共同購買紀錄找商品關聯，再以個別顧客買過或評過的商品查表。〔S04-02｜How It Works，pp. 78–79〕〔S04-04｜How It Works，p. 79；Scalability: A Comparison，p. 79〕 | 候選生成使用觀看紀錄。排序使用曝光資料，並以實際觀看時長為已點擊的曝光加權。〔S05-02｜§3.1，PDF p. 2；§3.2，圖 3，PDF p. 3〕〔S05-03｜§4，PDF p. 5；§4.2，PDF p. 7〕 |
+| 核心方法 | 商品對商品協同過濾。報告以餘弦相似度為例，用顧客的購買行為比較商品。〔S04-01｜Recommendation Algorithms，p. 76；Traditional Collaborative Filtering，pp. 76–77；How It Works，p. 78〕〔S04-03｜How It Works，p. 79〕 | 以兩個神經網路分別做候選生成與排序。文中的排序做法估計每次曝光的預期觀看時長。〔S05-01｜§2，圖 2，PDF p. 2〕〔S05-03｜§4，PDF p. 5；§4.2，PDF p. 7〕 |
+| 推薦流程 | 離線建立相似商品表。線上依顧客已買或評過的商品查表並合併結果。〔S04-04｜How It Works，p. 79；Scalability: A Comparison，p. 79〕 | 先從大型影片庫找出較小的候選集合，再為候選影片評分並依分數呈現。〔S05-01｜§2，圖 2，PDF p. 2〕 |
+| 主要設計考量 | 將耗時的建表工作放在離線處理，讓線上查詢工作量取決於個別顧客已買或評過的商品數。〔S04-04｜How It Works，p. 79；Scalability: A Comparison，p. 79〕 | 先縮小集合，讓排序能使用更多特徵細緻評分，也能整合原始分數無法直接比較的候選來源。〔S05-04｜§2，圖 2，PDF p. 2；§4，PDF p. 5〕 |</pre></article></main></body></html>
